@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 import { theme } from './assets/theme/theme';
 import GlobalStyle from './assets/styles/GlobalStyle';
-import SectionContent from './components/atoms/SectionContent/SectionContent';
+import MobileNav from './components/organisms/MobileNav/MobileNav';
 
 function App() {
 	return (
@@ -11,7 +11,8 @@ function App() {
 			<ThemeProvider theme={theme}>
 				<GlobalStyle />
 				<div>
-					<SectionContent isWhite={false} contentBody='lorem lorem' />
+					{/* <SectionContent isWhite={false} contentBody='lorem lorem' /> */}
+					<MobileNav />
 				</div>
 			</ThemeProvider>
 		</>
