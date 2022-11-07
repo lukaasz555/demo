@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 export const StyledHeader = styled.h1`
 	color: ${({ theme }) => theme.colors.black};
-	font-size: ${({ theme }) => theme.fontSize.xl};
+	font-size: ${({ theme }) => theme.fontSize.xxl};
 	text-align: center;
 	margin: 1em 0;
 

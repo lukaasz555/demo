@@ -8,13 +8,15 @@ import Homepage from './views/Homepage/Homepage';
 import Menu from './views/Menu/Menu';
 import Events from './views/Events/Events';
 import Contact from './views/Contact/Contact';
+import Footer from './components/molecules/Footer/Footer';
 
 const AppWrapper = styled.div`
 	min-width: 375px;
-	max-height: 1200px;
+	width: 100%;
 	overflow: hidden;
 	position: relative;
 	min-height: 100vh;
+	margin: 0 auto;
 `;
 
 function App() {
@@ -31,6 +33,7 @@ function App() {
 							<Route path='/events' element={<Events />} />
 							<Route path='/contact' element={<Contact />} />
 						</Routes>
+						<Footer />
 					</AppWrapper>
 				</Router>
 			</ThemeProvider>

@@ -7,8 +7,7 @@ export const ComponentWrapper = styled.section`
 	display: flex;
 	flex-direction: column;
 	justify-content: flex-start;
-	margin-top: 1em;
-	width: 100%;
+	margin: 1em auto;
 	min-width: 375px;
 
 	.mobileNav {
@@ -20,6 +19,7 @@ export const ComponentWrapper = styled.section`
 	}
 
 	@media (min-width: 768px) {
+		max-width: 1200px;
 		.mobileNav {
 			display: none;
 		}

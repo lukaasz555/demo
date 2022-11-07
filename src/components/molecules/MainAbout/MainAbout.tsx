@@ -9,7 +9,7 @@ const ComponentWrapper = styled.section`
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: center;
-	max-width: 560px;
+	margin: 2em auto;
 
 	.picture {
 		background-image: url('img/1.jpeg');
@@ -28,22 +28,28 @@ const ComponentWrapper = styled.section`
 		width: 90%;
 
 		a {
-			margin: 1.5em;
+			margin: 1.5em 0;
 		}
 	}
 
 	@media (min-width: 768px) {
 		flex-wrap: nowrap;
-		max-width: 100%;
-		padding: 0 5%;
+		margin-top: 2em;
+		max-width: 1200px;
+		justify-content: center;
 
 		.picture {
 			height: 360px;
 			order: 1;
+			flex-basis: 40%;
+			width: 100%;
 		}
 
 		.desc {
 			align-items: flex-start;
+			flex-basis: 40%;
+			padding-right: 4em;
+			width: 100%;
 		}
 	}
 `;

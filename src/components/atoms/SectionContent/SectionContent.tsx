@@ -23,7 +23,6 @@ export const StyledContent = styled.p<ContentColor>`
 `;
 
 const SectionContent: FC<SContentProps> = ({ contentBody, isWhite }) => {
-	console.log(isWhite);
 	return <StyledContent isWhite={isWhite}>{contentBody}</StyledContent>;
 };
 
