@@ -7,6 +7,11 @@ export const StyledNavItems = styled.nav<NavVisible>`
 	flex-direction: column;
 	align-items: center;
 	margin: 1.5em 0 1em;
+
+	@media (min-width: 768px) {
+		flex-direction: row;
+		display: flex;
+	}
 `;
 
 interface NavItemsProps {
