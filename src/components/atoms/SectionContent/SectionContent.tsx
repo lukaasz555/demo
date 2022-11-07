@@ -14,6 +14,12 @@ export const StyledContent = styled.p<ContentColor>`
 	font-size: ${({ theme }) => theme.fontSize.s};
 	color: ${(p) => (p.isWhite ? '#FFF' : 'black')};
 	background-color: ${(p) => (!p.isWhite ? '#FFF' : 'none')};
+	font-family: 'Montserrat', sans-serif;
+	text-align: center;
+
+	@media (min-width: 768px) {
+		text-align: left;
+	}
 `;
 
 const SectionContent: FC<SContentProps> = ({ contentBody, isWhite }) => {

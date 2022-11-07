@@ -8,8 +8,17 @@ export const ComponentWrapper = styled.section`
 	flex-direction: column;
 	justify-content: flex-start;
 	margin-top: 1em;
-	min-height: 80px;
-	background-color: #fab;
+	width: 100%;
+	min-width: 375px;
+
+	.mobileNav {
+		position: absolute;
+		left: 0;
+		right: 0;
+		top: 120px;
+		background: ${({ theme }) => theme.colors.white};
+	}
+
 	@media (min-width: 768px) {
 		.mobileNav {
 			display: none;

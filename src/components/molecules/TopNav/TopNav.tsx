@@ -32,7 +32,9 @@ interface TMNProps {
 const TopMobileNav: FC<TMNProps> = ({ visible, setVisible }) => {
 	return (
 		<ComponentWrapper>
-			<LogoReplacement />
+			<a href='/'>
+				<LogoReplacement />
+			</a>
 			<div className='desktopNav'>
 				<NavItems visible={visible} />
 			</div>
