@@ -19,6 +19,7 @@ export const ComponentWrapper = styled.section`
 	}
 
 	@media (min-width: 768px) {
+		min-width: 768px;
 		max-width: 1200px;
 		.mobileNav {
 			display: none;

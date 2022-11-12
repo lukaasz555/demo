@@ -12,6 +12,7 @@ export const ComponentWrapper = styled.div`
 	background: transparent;
 	min-height: 100px;
 	@media (min-width: 768px) {
+		max-width: 1200px;
 		div.burger {
 			display: none;
 		}
