@@ -12,11 +12,6 @@ const Left = styled.div`
 	display: flex;
 	flex-direction: column;
 	flex-wrap: wrap;
-	div:not(:first-child) {
-		display: float;
-		flex-wrap: wrap;
-		max-width: 95%;
-	}
 `;
 
 const Right = styled.div`
@@ -24,6 +19,7 @@ const Right = styled.div`
 	justify-content: flex-end;
 	align-items: center;
 	flex-basis: 20%;
+	margin-left: 10px;
 `;
 
 interface MItemProps {

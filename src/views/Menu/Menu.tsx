@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC, useEffect, useState } from 'react';
 import styled from 'styled-components';
 import Loader from '../../components/atoms/Loader/Loader';
 import { useQuery } from 'graphql-hooks';
@@ -36,6 +36,7 @@ interface MenuItemProps {
 
 const Menu: FC = () => {
 	const { loading, error, data } = useQuery(menu_query);
+	const [menu, setMenu] = useState<MenuItemProps[] | []>([]);
 
 	const getCategories = (): string[] => {
 		if (data) {
@@ -48,13 +49,16 @@ const Menu: FC = () => {
 		}
 	};
 
-	const getMenu = (): MenuItemProps[] => {
+	useEffect(() => {
 		if (data) {
-			return data.allCourses;
-		} else {
-			return [];
+			const def = data.allCourses.filter(
+				(i: MenuItemProps) => i.category === 'starters'
+			);
+			setMenu(
+				def.sort((a: MenuItemProps, b: MenuItemProps) => b.price - a.price)
+			);
 		}
-	};
+	}, [data]);
 
 	const capitalLetter = (string: string): string => {
 		const arr = Array.from(string);
@@ -63,30 +67,38 @@ const Menu: FC = () => {
 		return arr.join('');
 	};
 
+	const handleMenu = (category: string) => {
+		if (data) {
+			const filtered = data.allCourses.filter(
+				(i: MenuItemProps) => i.category === category
+			);
+			setMenu(filtered);
+		}
+	};
+
 	return (
 		<Wrapper>
 			{!data ? null : (
-				<>
-					<nav>
-						{getCategories().map((c: string) => (
-							<button onClick={(e) => console.log(c)}>
-								{capitalLetter(c)}
-							</button>
-						))}
-					</nav>
-					<div>
-						{getMenu().map((i) => (
-							<MenuItem
-								id={i.id}
-								name={i.name}
-								price={i.price}
-								desc={i.desc}
-								category={i.category}
-							/>
-						))}
-					</div>
-				</>
+				<nav>
+					{getCategories().map((c: string) => (
+						<button key={c} onClick={(e) => handleMenu(c)}>
+							{capitalLetter(c)}
+						</button>
+					))}
+				</nav>
 			)}
+
+			{data
+				? menu.map((i: MenuItemProps) => (
+						<MenuItem
+							id={i.id}
+							name={i.name}
+							price={i.price}
+							desc={i.desc}
+							category={i.category}
+						/>
+				  ))
+				: null}
 
 			{loading ? <Loader /> : null}
 			{error ? <Error /> : null}
