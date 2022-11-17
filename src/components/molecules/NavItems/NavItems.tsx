@@ -6,7 +6,7 @@ export const StyledNavItems = styled.nav<NavVisible>`
 	display: ${(p) => (p.visible ? 'flex' : 'none')};
 	flex-direction: column;
 	align-items: center;
-	margin: -10px 0 1em;
+	margin: 1em 0;
 	padding: 1em 0;
 	background-color: ${({ theme }) => theme.colors.black};
 
