@@ -1,20 +1,27 @@
 import React, { FC } from 'react';
 import { Fade as Hamburger } from 'hamburger-react';
 import styled from 'styled-components';
-import LogoReplacement from '../../atoms/LogoReplacement/LogoReplacement';
 import NavItems from '../NavItems/NavItems';
 
 export const ComponentWrapper = styled.div`
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	padding: 0 0.5em;
 	background: transparent;
 	min-height: 100px;
+
+	img {
+		height: 80px;
+	}
+
 	@media (min-width: 768px) {
 		max-width: 1200px;
 		div.burger {
 			display: none;
+		}
+
+		img {
+			height: 150px;
 		}
 	}
 
@@ -34,13 +41,13 @@ const TopMobileNav: FC<TMNProps> = ({ visible, setVisible }) => {
 	return (
 		<ComponentWrapper>
 			<a href='/'>
-				<LogoReplacement />
+				<img src='/img/logo_white.png' alt='Kardamon Olsztyn' />
 			</a>
 			<div className='desktopNav'>
 				<NavItems visible={visible} />
 			</div>
 			<div className='burger'>
-				<Hamburger color='#211C1E' toggle={setVisible} toggled={visible} />
+				<Hamburger color='#fff' toggle={setVisible} toggled={visible} />
 			</div>
 		</ComponentWrapper>
 	);

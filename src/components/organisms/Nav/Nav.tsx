@@ -4,12 +4,10 @@ import NavItems from '../../molecules/NavItems/NavItems';
 import TopNav from '../../molecules/TopNav/TopNav';
 
 export const ComponentWrapper = styled.section`
-	display: flex;
-	flex-direction: column;
-	justify-content: flex-start;
-	margin: 1em auto;
-	min-width: 375px;
-
+	margin: 0 auto 1em;
+	background-color: ${({ theme }) => theme.colors.black};
+	box-shadow: 0px 4px 20px 0px rgba(0, 0, 0, 0.1);
+	padding: 0.75em 0;
 	.mobileNav {
 		position: absolute;
 		left: 0;
@@ -19,23 +17,30 @@ export const ComponentWrapper = styled.section`
 	}
 
 	@media (min-width: 768px) {
-		min-width: 768px;
-		max-width: 1200px;
+		width: 100%;
 		.mobileNav {
 			display: none;
 		}
 	}
 `;
 
+export const InsideWrapper = styled.div`
+	margin: 0 auto;
+	min-width: 375px;
+	max-width: 1100px;
+`;
+
 const MobileNav: React.FC = () => {
 	const [visible, setVisible] = useState<boolean>(false);
 	return (
 		<ComponentWrapper>
-			<TopNav visible={visible} setVisible={setVisible} />
+			<InsideWrapper>
+				<TopNav visible={visible} setVisible={setVisible} />
 
-			<div className='mobileNav'>
-				<NavItems visible={visible} />
-			</div>
+				<div className='mobileNav'>
+					<NavItems visible={visible} />
+				</div>
+			</InsideWrapper>
 		</ComponentWrapper>
 	);
 };
