@@ -2,27 +2,51 @@ import React, { FC } from 'react';
 import styled from 'styled-components';
 
 const StyledItem = styled.div`
-	margin: 2em 0;
+	margin: 1em 0;
 	display: flex;
 	justify-content: space-between;
 	padding: 0 0.5em;
+	//background-color: #fab;
+	width: 350px;
+
+	@media (min-width: 768px) {
+		width: 700px;
+	}
 `;
 
 const Left = styled.div`
 	display: flex;
 	flex-direction: column;
 	flex-wrap: wrap;
+	h3 {
+		font-size: ${({ theme }) => theme.fontSize.xs};
+	}
+
+	h4 {
+		font-size: 14px;
+		font-weight: 300;
+	}
+
+	@media (min-width: 768px) {
+		h3 {
+			font-size: ${({ theme }) => theme.fontSize.m};
+		}
+
+		h4 {
+			font-size: ${({ theme }) => theme.fontSize.s};
+		}
+	}
 `;
 
 const Right = styled.div`
 	display: flex;
 	justify-content: flex-end;
-	align-items: center;
+	align-items: flex-start;
 	flex-basis: 20%;
 	margin-left: 10px;
 `;
 
-interface MItemProps {
+export interface MItemProps {
 	name: string;
 	price: number;
 	desc?: string;

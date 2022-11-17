@@ -2,7 +2,6 @@ import React, { FC, useEffect, useState } from 'react';
 import styled from 'styled-components';
 import Loader from '../../components/atoms/Loader/Loader';
 import { useQuery } from 'graphql-hooks';
-import MenuButton from '../../components/atoms/MenuButton/MenuButton';
 import Error from '../../components/atoms/Error/Error';
 import MenuItem from '../../components/atoms/MenuItem/MenuItem';
 
@@ -12,6 +11,33 @@ const Wrapper = styled.div`
 	flex-direction: column;
 	align-items: center;
 	min-height: 30vh;
+
+	.menu-items {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: center;
+		margin-bottom: 2em;
+	}
+`;
+
+const MenuList = styled.div`
+	display: flex;
+	flex-direction: column;
+`;
+
+const StyledButton = styled.button`
+	padding: 0.5em 0.25em;
+	margin: 0 0.25em;
+	border: none;
+	background: transparent;
+	cursor: pointer;
+	font-family: 'Merriweather', serif;
+	font-size: ${({ theme }) => theme.fontSize.m};
+	color: ${({ theme }) => theme.colors.gray};
+	transition: color 0.25s;
+	&:hover {
+		color: ${({ theme }) => theme.colors.black};
+	}
 `;
 
 const menu_query = `
@@ -79,17 +105,17 @@ const Menu: FC = () => {
 	return (
 		<Wrapper>
 			{!data ? null : (
-				<nav>
+				<div className='menu-items'>
 					{getCategories().map((c: string) => (
-						<button key={c} onClick={(e) => handleMenu(c)}>
+						<StyledButton key={c} onClick={(e) => handleMenu(c)}>
 							{capitalLetter(c)}
-						</button>
+						</StyledButton>
 					))}
-				</nav>
+				</div>
 			)}
-
-			{data
-				? menu.map((i: MenuItemProps) => (
+			{data ? (
+				<MenuList>
+					{menu.map((i: MenuItemProps) => (
 						<MenuItem
 							id={i.id}
 							name={i.name}
@@ -97,8 +123,9 @@ const Menu: FC = () => {
 							desc={i.desc}
 							category={i.category}
 						/>
-				  ))
-				: null}
+					))}
+				</MenuList>
+			) : null}
 
 			{loading ? <Loader /> : null}
 			{error ? <Error /> : null}
