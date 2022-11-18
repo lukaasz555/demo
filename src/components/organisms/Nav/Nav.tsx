@@ -13,7 +13,7 @@ export const ComponentWrapper = styled.section`
 		left: 0;
 		right: 0;
 		top: 120px;
-		background: ${({ theme }) => theme.colors.white};
+		background: ${({ theme }) => theme.colors.black};
 	}
 
 	@media (min-width: 768px) {

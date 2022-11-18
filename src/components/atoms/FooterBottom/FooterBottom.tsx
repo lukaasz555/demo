@@ -12,6 +12,7 @@ const StyledDiv = styled.div`
 
 	p {
 		color: ${({ theme }) => theme.colors.white};
+		font-size: ${({ theme }) => theme.fontSize.s};
 	}
 `;
 

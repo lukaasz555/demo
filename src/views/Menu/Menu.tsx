@@ -4,6 +4,8 @@ import Loader from '../../components/atoms/Loader/Loader';
 import { useQuery } from 'graphql-hooks';
 import Error from '../../components/atoms/Error/Error';
 import MenuItem from '../../components/atoms/MenuItem/MenuItem';
+import { capitalLetter } from '../../helpers/helpers';
+import { NavLink } from 'react-router-dom';
 
 const Wrapper = styled.div`
 	margin-top: 2em;
@@ -63,6 +65,8 @@ interface MenuItemProps {
 const Menu: FC = () => {
 	const { loading, error, data } = useQuery(menu_query);
 	const [menu, setMenu] = useState<MenuItemProps[] | []>([]);
+	const [categories, setCategories] = useState<string[]>([]);
+	const [isActive, setActive] = useState<boolean>(false);
 
 	const getCategories = (): string[] => {
 		if (data) {
@@ -83,15 +87,9 @@ const Menu: FC = () => {
 			setMenu(
 				def.sort((a: MenuItemProps, b: MenuItemProps) => b.price - a.price)
 			);
+			getMenuItems('starters');
 		}
 	}, [data]);
-
-	const capitalLetter = (string: string): string => {
-		const arr = Array.from(string);
-		const firstLetter = arr.slice(0, 1).toString().toUpperCase();
-		arr.splice(0, 1, firstLetter);
-		return arr.join('');
-	};
 
 	const handleMenu = (category: string) => {
 		if (data) {
@@ -100,6 +98,13 @@ const Menu: FC = () => {
 			);
 			setMenu(filtered);
 		}
+	};
+
+	const getMenuItems = (category: string) => {
+		const set: string[] = Array.from(
+			new Set(data.allCourses.map((i: { category: string }) => i.category))
+		);
+		setCategories(set);
 	};
 
 	return (
@@ -113,6 +118,7 @@ const Menu: FC = () => {
 					))}
 				</div>
 			)}
+
 			{data ? (
 				<MenuList>
 					{menu.map((i: MenuItemProps) => (

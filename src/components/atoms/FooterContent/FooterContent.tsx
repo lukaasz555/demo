@@ -7,7 +7,7 @@ interface FooterProps {
 }
 
 export const StyledContent = styled.p`
-	font-size: ${({ theme }) => theme.fontSize.xs};
+	font-size: ${({ theme }) => theme.fontSize.s};
 	color: ${({ theme }) => theme.colors.white};
 	font-family: 'Montserrat', sans-serif;
 	text-align: center;
