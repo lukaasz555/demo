@@ -26,10 +26,10 @@ type NavVisible = {
 
 const NavItems: React.FC<NavItemsProps> = ({ visible }) => (
 	<StyledNavItems visible={visible}>
-		<NavItem buttonBody='Główna' target='/' />
-		<NavItem buttonBody='Menu' target='/menu' />
-		<NavItem buttonBody='Przyjęcia' target='/events' />
-		<NavItem buttonBody='Kontakt' target='/contact' />
+		<NavItem buttonBody='Główna' target='/demo/' />
+		<NavItem buttonBody='Menu' target='/demo/menu' />
+		<NavItem buttonBody='Przyjęcia' target='/demo/events' />
+		<NavItem buttonBody='Kontakt' target='/demo/contact' />
 	</StyledNavItems>
 );
 

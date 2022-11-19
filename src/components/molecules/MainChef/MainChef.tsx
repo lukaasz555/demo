@@ -83,7 +83,7 @@ const MainChef: FC = () => {
 				/>
 				<SectionHeader headerBody='Rafał Dykty' />
 				<h2>NASZ SZEF KUCHNI</h2>
-				<img src='/img/signature.jpeg' alt='' />
+				<img src='./img/signature.jpeg' alt='' />
 				<SectionContent
 					isWhite={false}
 					contentBody='Zajrzyj na Żołnierską 4 i sprawdź co pysznego może dla Ciebie przygotować nasz szalony Szef Kuchni. Rafał zawsze dodaje do potraw coś „extra”. To coś – to talent!'

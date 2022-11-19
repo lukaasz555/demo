@@ -13,7 +13,6 @@ const Pictures = styled.div`
 	display: flex;
 	justify-content: space-between;
 	max-width: 1000px;
-
 	.left,
 	.right {
 		flex-basis: 50%;
@@ -26,7 +25,7 @@ const Pictures = styled.div`
 	}
 
 	.one {
-		background-image: url('/img/gal1.jpeg');
+		background-image: url('./img/gal1.jpeg');
 		height: 100%;
 		min-width: 400px;
 		background-position: center;
@@ -36,7 +35,7 @@ const Pictures = styled.div`
 	}
 
 	.two {
-		background-image: url('/img/gal2.jpeg');
+		background-image: url('./img/gal2.jpeg');
 		height: 49%;
 		min-width: 500px;
 		background-position: center;
@@ -45,7 +44,7 @@ const Pictures = styled.div`
 	}
 
 	.three {
-		background-image: url('/img/gal3.jpeg');
+		background-image: url('./img/gal3.jpeg');
 		height: 49%;
 		min-width: 500px;
 		background-position: center;
@@ -58,6 +57,13 @@ const Pictures = styled.div`
 		justify-content: center;
 		.left {
 			display: none;
+		}
+	}
+
+	@media (max-width: 576px) {
+		.three,
+		.two {
+			min-width: 350px;
 		}
 	}
 `;

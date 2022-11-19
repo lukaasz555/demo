@@ -19,7 +19,7 @@ const StyledDiv = styled.div`
 const FooterBottom: FC = () => {
 	return (
 		<StyledDiv>
-			<img src='/img/logo_white.png' alt='Kardamon Olsztyn' />
+			<img src='./img/logo_white.png' alt='Kardamon Olsztyn' />
 			<p>2022 &copy; Restauracja Kardamon Olsztyn</p>
 		</StyledDiv>
 	);

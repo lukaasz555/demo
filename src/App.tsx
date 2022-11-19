@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import styled, { ThemeProvider } from 'styled-components';
 import { theme } from './assets/theme/theme';
 import GlobalStyle from './assets/styles/GlobalStyle';
@@ -24,18 +24,16 @@ function App() {
 		<>
 			<ThemeProvider theme={theme}>
 				<GlobalStyle />
-				<Router>
-					<AppWrapper>
-						<Nav />
-						<Routes>
-							<Route path='/' element={<Homepage />} />
-							<Route path='/menu' element={<Menu />} />
-							<Route path='/events' element={<Events />} />
-							<Route path='/contact' element={<Contact />} />
-						</Routes>
-						<Footer />
-					</AppWrapper>
-				</Router>
+				<AppWrapper>
+					<Nav />
+					<Routes>
+						<Route path='/demo/' element={<Homepage />} />
+						<Route path='/demo/menu' element={<Menu />} />
+						<Route path='/demo/events' element={<Events />} />
+						<Route path='/demo/contact' element={<Contact />} />
+					</Routes>
+					<Footer />
+				</AppWrapper>
 			</ThemeProvider>
 		</>
 	);

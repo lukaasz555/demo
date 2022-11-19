@@ -28,6 +28,7 @@ export const InsideWrapper = styled.div`
 	margin: 0 auto;
 	min-width: 375px;
 	max-width: 1100px;
+	padding: 0 1.5em;
 `;
 
 const MobileNav: React.FC = () => {

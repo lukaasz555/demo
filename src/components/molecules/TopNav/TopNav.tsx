@@ -40,8 +40,8 @@ interface TMNProps {
 const TopMobileNav: FC<TMNProps> = ({ visible, setVisible }) => {
 	return (
 		<ComponentWrapper>
-			<a href='/'>
-				<img src='/img/logo_white.png' alt='Kardamon Olsztyn' />
+			<a href='/demo/'>
+				<img src='./img/logo_white.png' alt='Kardamon Olsztyn' />
 			</a>
 			<div className='desktopNav'>
 				<NavItems visible={visible} />

@@ -45,6 +45,7 @@ const ComponentWrapper = styled.section`
 	@media (min-width: 768px) {
 		display: flex;
 		justify-content: center;
+		padding: 2em 0;
 		.contentWrapper {
 			max-width: 1200px;
 			flex-direction: row;
