@@ -6,7 +6,6 @@ const StyledItem = styled.div`
 	display: flex;
 	justify-content: space-between;
 	padding: 0 0.5em;
-	//background-color: #fab;
 	width: 350px;
 
 	@media (min-width: 768px) {

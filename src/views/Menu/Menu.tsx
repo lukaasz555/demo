@@ -4,8 +4,6 @@ import Loader from '../../components/atoms/Loader/Loader';
 import { useQuery } from 'graphql-hooks';
 import Error from '../../components/atoms/Error/Error';
 import MenuItem from '../../components/atoms/MenuItem/MenuItem';
-import { capitalLetter } from '../../helpers/helpers';
-import { NavLink } from 'react-router-dom';
 
 const Wrapper = styled.div`
 	margin-top: 2em;
@@ -66,14 +64,13 @@ const Menu: FC = () => {
 	const { loading, error, data } = useQuery(menu_query);
 	const [menu, setMenu] = useState<MenuItemProps[] | []>([]);
 	const [categories, setCategories] = useState<string[]>([]);
-	const [isActive, setActive] = useState<boolean>(false);
 
 	const getCategories = (): string[] => {
 		if (data) {
 			const res: string[] = Array.from(
 				new Set(data.allCourses.map((i: { category: string }) => i.category))
 			);
-			return res;
+			return res.sort((a: any, b: any) => a - b);
 		} else {
 			return [];
 		}
@@ -81,11 +78,13 @@ const Menu: FC = () => {
 
 	useEffect(() => {
 		if (data) {
-			const def = data.allCourses.filter(
-				(i: MenuItemProps) => i.category === 'starters'
+			const defaultMenu = data.allCourses.filter(
+				(i: MenuItemProps) => i.category === '1'
 			);
 			setMenu(
-				def.sort((a: MenuItemProps, b: MenuItemProps) => b.price - a.price)
+				defaultMenu.sort(
+					(a: MenuItemProps, b: MenuItemProps) => b.price - a.price
+				)
 			);
 			getMenuItems('starters');
 		}
@@ -93,9 +92,9 @@ const Menu: FC = () => {
 
 	const handleMenu = (category: string) => {
 		if (data) {
-			const filtered = data.allCourses.filter(
-				(i: MenuItemProps) => i.category === category
-			);
+			const filtered = data.allCourses
+				.filter((i: MenuItemProps) => i.category === category)
+				.sort((a: MenuItemProps, b: MenuItemProps) => a.price - b.price);
 			setMenu(filtered);
 		}
 	};
@@ -107,18 +106,38 @@ const Menu: FC = () => {
 		setCategories(set);
 	};
 
+	const handleName = (item: string) => {
+		switch (item) {
+			case '1':
+				return 'Przystawki';
+			case '2':
+				return 'Zupy';
+			case '3':
+				return 'Sałaty';
+			case '4':
+				return 'Dania główne';
+			case '5':
+				return 'Dla dzieci';
+			case '6':
+				return 'Desery';
+			default:
+				return null;
+		}
+	};
+
+	const menuItems = () => (
+		<div className='menu-items'>
+			{getCategories().map((c: string) => (
+				<StyledButton key={c} onClick={(e) => handleMenu(c)}>
+					{handleName(c)}
+				</StyledButton>
+			))}
+		</div>
+	);
+
 	return (
 		<Wrapper>
-			{!data ? null : (
-				<div className='menu-items'>
-					{getCategories().map((c: string) => (
-						<StyledButton key={c} onClick={(e) => handleMenu(c)}>
-							{capitalLetter(c)}
-						</StyledButton>
-					))}
-				</div>
-			)}
-
+			{data ? menuItems() : null}
 			{data ? (
 				<MenuList>
 					{menu.map((i: MenuItemProps) => (
@@ -132,7 +151,6 @@ const Menu: FC = () => {
 					))}
 				</MenuList>
 			) : null}
-
 			{loading ? <Loader /> : null}
 			{error ? <Error /> : null}
 		</Wrapper>

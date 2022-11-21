@@ -68,18 +68,20 @@ const Pictures = styled.div`
 	}
 `;
 
-const MainPictures: FC = () => (
-	<ComponentWrapper>
-		<Pictures>
-			<div className='left'>
-				<div className='one'></div>
-			</div>
+const MainPictures: FC = () => {
+	return (
+		<ComponentWrapper>
+			<Pictures>
+				<div className='left'>
+					<div className='one'></div>
+				</div>
 
-			<div className='right'>
-				<div className='two'></div>
-				<div className='three'></div>
-			</div>
-		</Pictures>
-	</ComponentWrapper>
-);
+				<div className='right'>
+					<div className='two'></div>
+					<div className='three'></div>
+				</div>
+			</Pictures>
+		</ComponentWrapper>
+	);
+};
 export default MainPictures;
