@@ -1,8 +1,10 @@
-import React, { FC } from 'react';
+import React, { FC, useRef, useEffect } from 'react';
 import styled from 'styled-components';
 import SectionContent from '../../atoms/SectionContent/SectionContent';
 import SectionHeader from '../../atoms/SectionHeader/SectionHeader';
 import CTAwhite from '../../atoms/CTAwhite/CTAwhite';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/all';
 
 const ComponentWrapper = styled.section`
 	background-color: ${({ theme }) => theme.colors.black};
@@ -19,7 +21,6 @@ const ComponentWrapper = styled.section`
 		flex-direction: column;
 		align-items: center;
 		justify-content: flex-start;
-		background-color: #fab;
 
 		.picture {
 			background-image: url('img/3.jpeg');
@@ -77,9 +78,28 @@ const ComponentWrapper = styled.section`
 `;
 
 const MainEvents: FC<{ id: string }> = ({ id }) => {
+	gsap.registerPlugin(ScrollTrigger);
+	const ref = useRef(null);
+
+	useEffect(() => {
+		gsap.fromTo(
+			'#section2',
+			{ opacity: 0 },
+			{
+				opacity: 1,
+				duration: 5,
+				scrollTrigger: {
+					trigger: '#section2',
+					start: 'top center',
+					end: 'bottom top',
+				},
+			}
+		);
+	}, []);
+
 	return (
 		<ComponentWrapper>
-			<div id={id} className='contentWrapper'>
+			<div id={id} ref={ref} className='contentWrapper'>
 				<div className='picture'></div>
 				<div className='desc'>
 					<SectionHeader headerBody='Znamy się na przyjęciach' />
