@@ -70,6 +70,8 @@ const ComponentWrapper = styled.section`
 `;
 
 const MainEvents: FC = () => {
+	console.log(ComponentWrapper.scrollY);
+
 	return (
 		<ComponentWrapper>
 			<div className='contentWrapper'>
