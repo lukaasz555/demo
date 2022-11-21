@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import styled, { ThemeProvider } from 'styled-components';
 import { theme } from './assets/theme/theme';
@@ -22,7 +22,7 @@ const AppWrapper = styled.div`
 `;
 
 function App() {
-	//console.log(useScroll());
+	console.log(useScroll());
 
 	const [showToTop, setShowToTop] = useState(false);
 
@@ -42,6 +42,7 @@ function App() {
 				<GlobalStyle />
 				<AppWrapper>
 					<Nav />
+
 					<Routes>
 						<Route path='/demo/' element={<Homepage />} />
 						<Route path='/demo/menu' element={<Menu />} />

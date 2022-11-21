@@ -9,11 +9,17 @@ const ComponentWrapper = styled.section`
 	margin-top: 3em;
 	width: 100%;
 
-	.contentWrapper {
+	#section2.current {
+		background-color: red;
+	}
+
+	#section2
+	/* .contentWrapper */ {
 		display: flex;
 		flex-direction: column;
 		align-items: center;
 		justify-content: flex-start;
+		background-color: #fab;
 
 		.picture {
 			background-image: url('img/3.jpeg');
@@ -46,7 +52,8 @@ const ComponentWrapper = styled.section`
 		display: flex;
 		justify-content: center;
 		padding: 2em 0;
-		.contentWrapper {
+		/* .contentWrapper  */
+		#section2 {
 			max-width: 1200px;
 			flex-direction: row;
 			align-items: center;
@@ -69,12 +76,10 @@ const ComponentWrapper = styled.section`
 	}
 `;
 
-const MainEvents: FC = () => {
-	console.log(ComponentWrapper.scrollY);
-
+const MainEvents: FC<{ id: string }> = ({ id }) => {
 	return (
 		<ComponentWrapper>
-			<div className='contentWrapper'>
+			<div id={id} className='contentWrapper'>
 				<div className='picture'></div>
 				<div className='desc'>
 					<SectionHeader headerBody='Znamy się na przyjęciach' />
