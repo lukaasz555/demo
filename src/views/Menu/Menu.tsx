@@ -42,7 +42,7 @@ const StyledButton = styled.button`
 
 const menu_query = `
 {
-	allCourses {
+	allCourses(first: 50) {
 	  id
 	  name
 	  price
@@ -86,7 +86,7 @@ const Menu: FC = () => {
 					(a: MenuItemProps, b: MenuItemProps) => b.price - a.price
 				)
 			);
-			getMenuItems('starters');
+			getMenuItems('1');
 		}
 	}, [data]);
 
@@ -134,6 +134,8 @@ const Menu: FC = () => {
 			))}
 		</div>
 	);
+
+	console.log(data);
 
 	return (
 		<Wrapper>
