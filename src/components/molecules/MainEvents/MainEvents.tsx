@@ -5,11 +5,12 @@ import SectionHeader from '../../atoms/SectionHeader/SectionHeader';
 import CTAwhite from '../../atoms/CTAwhite/CTAwhite';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/all';
+import BgDecoration from '../../atoms/BgDecoration/BgDecoration';
 
 const ComponentWrapper = styled.section`
 	background-color: ${({ theme }) => theme.colors.black};
-	margin-top: 3em;
 	width: 100%;
+	position: relative;
 
 	#section3 {
 		display: flex;

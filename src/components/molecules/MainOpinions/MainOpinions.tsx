@@ -15,16 +15,7 @@ const ComponentWrapper = styled.section`
 		display: flex;
 		flex-wrap: wrap;
 		justify-content: center;
-		/* 		opacity: 0;
-		transition: opacity 0.7s; */
 	}
-
-	/* 	&.isVisible {
-
-		.opinions_wrapper {
-			opacity: 1;
-		}
-	} */
 `;
 const MainOpinions: FC = () => {
 	gsap.registerPlugin(ScrollTrigger);

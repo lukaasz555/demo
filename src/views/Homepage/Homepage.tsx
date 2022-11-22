@@ -5,8 +5,7 @@ import MainChef from '../../components/molecules/MainChef/MainChef';
 import MainEvents from '../../components/molecules/MainEvents/MainEvents';
 import MainOpinions from '../../components/molecules/MainOpinions/MainOpinions';
 import MainPictures from '../../components/molecules/MainPictures/MainPictures';
-import Scrollspy from 'react-scrollspy';
-import { gsap } from 'gsap';
+import MainTop from '../../components/organisms/MainTop/MainTop';
 
 const Wrapper = styled.div`
 	margin-top: 2em;
@@ -19,8 +18,9 @@ const Wrapper = styled.div`
 const Homepage: FC = () => {
 	return (
 		<Wrapper>
-			<MainAbout />
-			<MainChef />
+			{/* 			<MainAbout />
+			<MainChef /> */}
+			<MainTop />
 			<MainEvents />
 			<MainPictures />
 			<MainOpinions />
