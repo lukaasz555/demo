@@ -17,29 +17,14 @@ const Wrapper = styled.div`
 `;
 
 const Homepage: FC = () => {
-	/* 	const ref = useRef(null);
-
-	useEffect(() => {
-		gsap.fromTo(
-			'#section2',
-			{ backgroundColor: '#fab' },
-			{ backgroundColor: 'red' }
-		);
-	}, []); */
-
 	return (
-		/* 		<Scrollspy
-			items={['section1', 'section2', 'section3']}
-			currentClassName='current'
-			componentTag={'div'}> */
 		<Wrapper>
 			<MainAbout />
 			<MainChef />
-			<MainEvents /* ref={ref} */ id='section2' />
+			<MainEvents />
 			<MainPictures />
 			<MainOpinions />
 		</Wrapper>
-		/* 		</Scrollspy> */
 	);
 };
 

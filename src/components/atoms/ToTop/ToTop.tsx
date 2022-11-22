@@ -10,7 +10,7 @@ const ToTopButtonAnimation = keyframes`
 
 const ToTopButton = styled.button`
 	position: fixed;
-	right: 1em;
+	right: 0;
 	bottom: 1em;
 	background: ${({ theme }) => theme.colors.black};
 	border: none;
@@ -19,6 +19,10 @@ const ToTopButton = styled.button`
 	cursor: pointer;
 	animation: 0.5s linear 1 both ${ToTopButtonAnimation};
 	box-shadow: 4px 8px 20px rgba(0, 0, 0, 0.2);
+
+	@media (min-width: 576px) {
+		right: 1em;
+	}
 `;
 
 const ToTop: FC = () => {

@@ -11,12 +11,7 @@ const ComponentWrapper = styled.section`
 	margin-top: 3em;
 	width: 100%;
 
-	#section2.current {
-		background-color: red;
-	}
-
-	#section2
-	/* .contentWrapper */ {
+	#section3 {
 		display: flex;
 		flex-direction: column;
 		align-items: center;
@@ -53,8 +48,8 @@ const ComponentWrapper = styled.section`
 		display: flex;
 		justify-content: center;
 		padding: 2em 0;
-		/* .contentWrapper  */
-		#section2 {
+
+		#section3 {
 			max-width: 1200px;
 			flex-direction: row;
 			align-items: center;
@@ -77,21 +72,21 @@ const ComponentWrapper = styled.section`
 	}
 `;
 
-const MainEvents: FC<{ id: string }> = ({ id }) => {
+const MainEvents: FC = () => {
 	gsap.registerPlugin(ScrollTrigger);
 	const ref = useRef(null);
 
 	useEffect(() => {
 		gsap.fromTo(
-			'#section2',
+			'#section3',
 			{ opacity: 0 },
 			{
 				opacity: 1,
-				duration: 5,
+				duration: 4,
 				scrollTrigger: {
-					trigger: '#section2',
+					trigger: '#section3',
 					start: 'top center',
-					end: 'bottom top',
+					end: 'bottom',
 				},
 			}
 		);
@@ -99,7 +94,7 @@ const MainEvents: FC<{ id: string }> = ({ id }) => {
 
 	return (
 		<ComponentWrapper>
-			<div id={id} ref={ref} className='contentWrapper'>
+			<div id='section3' ref={ref} className='contentWrapper'>
 				<div className='picture'></div>
 				<div className='desc'>
 					<SectionHeader headerBody='Znamy się na przyjęciach' />
