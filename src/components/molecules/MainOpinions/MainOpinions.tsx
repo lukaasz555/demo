@@ -1,7 +1,9 @@
-import React, { FC } from 'react';
+import React, { FC, useEffect, useRef } from 'react';
 import styled from 'styled-components';
 import Opinion from '../../atoms/Opinion/Opinion';
 import SectionHeader from '../../atoms/SectionHeader/SectionHeader';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/all';
 
 const ComponentWrapper = styled.section`
 	display: flex;
@@ -9,17 +11,53 @@ const ComponentWrapper = styled.section`
 	align-items: center;
 	margin-top: 2em;
 
-	div {
+	div.opinions_wrapper {
 		display: flex;
 		flex-wrap: wrap;
 		justify-content: center;
+		/* 		opacity: 0;
+		transition: opacity 0.7s; */
 	}
+
+	/* 	&.isVisible {
+
+		.opinions_wrapper {
+			opacity: 1;
+		}
+	} */
 `;
 const MainOpinions: FC = () => {
+	gsap.registerPlugin(ScrollTrigger);
+
+	useEffect(() => {
+		gsap.fromTo(
+			'#section5',
+			{ opacity: 0 },
+			{
+				opacity: 1,
+				duration: 2,
+				scrollTrigger: {
+					trigger: '#section5',
+					start: 'top center',
+					end: 'bottom',
+				},
+			}
+		);
+
+		gsap.to('.opinionsH1', {
+			scrollTrigger: {
+				trigger: '#section5',
+				start: 'top center',
+				end: 'bottom center',
+				toggleClass: 'isVisible',
+			},
+		});
+	}, []);
+
 	return (
-		<ComponentWrapper>
+		<ComponentWrapper id='section5'>
 			<SectionHeader headerBody='Opinie' />
-			<div>
+			<div className='opinions_wrapper'>
 				<Opinion
 					author='Monika'
 					opinion='Pyszne jedzenie, solidne porcje, miła obsługa. Nowe, świetne miejsce na kulinarnej mapie Olsztyna…'

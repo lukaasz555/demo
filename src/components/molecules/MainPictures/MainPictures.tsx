@@ -17,10 +17,23 @@ const Pictures = styled.div`
 	justify-content: space-between;
 	max-width: 1000px;
 
+	&.isVisible {
+		.two,
+		.three {
+			transform: scale(1);
+			transition: transform 0.7s;
+		}
+	}
+
 	.one,
 	.two,
 	.three {
 		transition: transform 0.4s;
+	}
+
+	.two,
+	.three {
+		transform: scale(0.8);
 	}
 
 	.left,
@@ -78,6 +91,11 @@ const Pictures = styled.div`
 	}
 
 	@media (min-width: 992px) {
+		.two,
+		.three {
+			transform: scale(1);
+		}
+
 		&.isVisible {
 			.one {
 				transform-origin: left;
