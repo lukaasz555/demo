@@ -9,7 +9,6 @@ import Menu from './views/Menu/Menu';
 import Events from './views/Events/Events';
 import Contact from './views/Contact/Contact';
 import Footer from './components/molecules/Footer/Footer';
-import useScroll from './hooks/useScroll';
 import ToTop from './components/atoms/ToTop/ToTop';
 
 const AppWrapper = styled.div`
@@ -22,8 +21,6 @@ const AppWrapper = styled.div`
 `;
 
 function App() {
-	console.log(useScroll());
-
 	const [showToTop, setShowToTop] = useState(false);
 
 	useEffect(() => {

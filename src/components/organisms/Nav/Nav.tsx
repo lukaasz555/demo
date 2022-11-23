@@ -13,6 +13,7 @@ export const ComponentWrapper = styled.section`
 		left: 0;
 		right: 0;
 		top: 120px;
+		z-index: 5;
 		background: ${({ theme }) => theme.colors.black};
 	}
 
