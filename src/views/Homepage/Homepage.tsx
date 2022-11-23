@@ -1,11 +1,9 @@
 import React, { FC } from 'react';
 import styled from 'styled-components';
-import MainAbout from '../../components/molecules/MainAbout/MainAbout';
-import MainChef from '../../components/molecules/MainChef/MainChef';
 import MainEvents from '../../components/molecules/MainEvents/MainEvents';
 import MainOpinions from '../../components/molecules/MainOpinions/MainOpinions';
 import MainPictures from '../../components/molecules/MainPictures/MainPictures';
-import Scrollspy from 'react-scrollspy';
+import MainTop from '../../components/organisms/MainTop/MainTop';
 
 const Wrapper = styled.div`
 	margin-top: 2em;
@@ -17,18 +15,12 @@ const Wrapper = styled.div`
 
 const Homepage: FC = () => {
 	return (
-		<Scrollspy
-			items={['section1', 'section2', 'section3']}
-			currentClassName='current'
-			componentTag={'div'}>
-			<Wrapper>
-				<MainAbout />
-				<MainChef />
-				<MainEvents id='section2' />
-				<MainPictures />
-				<MainOpinions />
-			</Wrapper>
-		</Scrollspy>
+		<Wrapper>
+			<MainTop />
+			<MainEvents />
+			<MainPictures />
+			<MainOpinions />
+		</Wrapper>
 	);
 };
 

@@ -1,5 +1,7 @@
-import React, { FC } from 'react';
+import React, { FC, useRef, useEffect } from 'react';
 import styled from 'styled-components';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/all';
 
 const ComponentWrapper = styled.section`
 	margin-top: 3em;
@@ -13,6 +15,26 @@ const Pictures = styled.div`
 	display: flex;
 	justify-content: space-between;
 	max-width: 1000px;
+
+	&.isVisible {
+		.two,
+		.three {
+			transform: scale(1);
+			transition: transform 0.7s;
+		}
+	}
+
+	.one,
+	.two,
+	.three {
+		transition: transform 0.4s;
+	}
+
+	.two,
+	.three {
+		transform: scale(0.8);
+	}
+
 	.left,
 	.right {
 		flex-basis: 50%;
@@ -66,19 +88,52 @@ const Pictures = styled.div`
 			min-width: 350px;
 		}
 	}
+
+	@media (min-width: 992px) {
+		.two,
+		.three {
+			transform: scale(1);
+		}
+
+		&.isVisible {
+			.one {
+				transform-origin: left;
+				transform: translateX(-0.7em);
+			}
+
+			.two,
+			.three {
+				transform: translateX(0.7em);
+				transform-origin: right;
+			}
+		}
+	}
 `;
 
 const MainPictures: FC = () => {
+	gsap.registerPlugin(ScrollTrigger);
+
+	useEffect(() => {
+		gsap.to('#section4', {
+			scrollTrigger: {
+				trigger: '#section4',
+				start: 'top center',
+				end: 'bottom center',
+				toggleClass: 'isVisible',
+			},
+		});
+	}, []);
+
 	return (
 		<ComponentWrapper>
-			<Pictures>
+			<Pictures id='section4'>
 				<div className='left'>
 					<div className='one'></div>
 				</div>
 
 				<div className='right'>
-					<div className='two'></div>
-					<div className='three'></div>
+					<div className='two imgToAnimate'></div>
+					<div className='three imgToAnimate'></div>
 				</div>
 			</Pictures>
 		</ComponentWrapper>

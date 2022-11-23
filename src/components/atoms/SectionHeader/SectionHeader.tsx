@@ -14,6 +14,7 @@ export const StyledHeader = styled.h1`
 
 interface SHeaderProps {
 	headerBody: string;
+	className?: string;
 }
 
 const SectionHeader: FC<SHeaderProps> = ({ headerBody }) => (

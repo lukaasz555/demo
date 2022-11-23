@@ -13,7 +13,7 @@ type ContentColor = {
 export const StyledContent = styled.p<ContentColor>`
 	font-size: ${({ theme }) => theme.fontSize.s};
 	color: ${(p) => (p.isWhite ? '#FFF' : 'black')};
-	background-color: ${(p) => (!p.isWhite ? '#FFF' : 'none')};
+	background-color: ${(p) => (!p.isWhite ? 'transparent' : 'none')};
 	font-family: 'Montserrat', sans-serif;
 	text-align: center;
 
